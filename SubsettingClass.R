@@ -1,8 +1,15 @@
 #reading the data
-Dummy_1 <- read.csv("./Data/OnderwijsStuff/Dummy_1.csv", sep=";")
+Dummy_1 <- read.csv("./Data/OnderwijsStuff/Dummy_1.csv", sep=",")
 
 #renaming the data.frame
 data <- Dummy_1
+
+# changing the names of the data.frame to English names
+names(data)
+names(data) <- c("Surname", "StudentID", "Class", "Score")
+
+#checking change 'names'
+names(data)
 
 #checking structure of 'data'
 str(data)
@@ -13,14 +20,19 @@ head(data)
 #checking the levels of "$Class"
 levels(data$Class)
 
-#substitute the typo "cl3" for "vl3"
+#substitute the typo "cl3" for "vl3", using gsub
 data$Class <- gsub("cl3", "vl3", data$Class)
 
-# gsub chages the factor Class to "character" the below line changes the "$Class" back to factor
+# An alternative way to change the entry (typing error "cl3") 
+#of one specific cell:
+#---->  data[3,3] <- c("vl3")
+
+# gsub is better, it chages the factor Class 
+#to "character" the below line changes the "$Class" back to factor
 data$Class <- as.factor(data$Class)
 
 # checking change
-levels(data$Klas)
+levels(data$Class)
 
 #If there are empty levels remove them with 
 #data$Klas <- droplevels(data$Klas)
@@ -34,10 +46,10 @@ Class_split <- split(data, data$Class)
 Labels_Class <- as.character(levels(data$Class))
 
 
-CommaString_Class <- cat(paste(shQuote(Labels_Class, type="cmd"), collapse=", "))
+cat(paste(shQuote(Labels_Class, type="cmd"), collapse=", "))
 #copy the output of the line above to "new_names" below
 
-for (i in 1:length(Renate_split)) {
+for (i in 1:length(Class_split)) {
   
   new_names <- c("vl3", "vl4", "vl5")
   
@@ -46,16 +58,16 @@ for (i in 1:length(Renate_split)) {
   
   # save each new data frame as an individual .csv file based on its name using lapply
   
-  setwd("C:/RWorkingDir/Data/Renate")
+  setwd("C:/RWorkingDir/Data/OnderwijsStuff")
   
   
-  lapply(1:length(Renate_split), function(i) write.csv(Renate_split[[i]], 
-                                          file = paste0(names(Renate_split[i]), ".csv"),
-                                                     row.names = FALSE))
+  lapply(1:length(Class_split), function(i) write.csv(Class_split[[i]], 
+              file = paste0(names(Class_split[i]), ".csv"),
+              row.names = FALSE))
   
   setwd("C:/RWorkingDir")
   
-  print(names(Renate_split))
+  print(names(Class_split))
   
 }
 
