@@ -43,8 +43,18 @@ for (i in 1:length(Renate_split)) {
 }
 
 ##################################
+
 #Opdrachten: 
-#1) Maak per klas een CSV file
-#2) Maak voor een scatterplot waarbij op de x-as de studentnummers staan en op de y-as het aantal behaalde punten, 
-#geef de punten in de grafiek een kleur per klas rood = VL3, blauw = VL4, bruin = VL5 
+# 1) Maak per klas een CSV file
+# 2) Maak voor een scatterplot waarbij op de x-as de studentnummers staan en op de y-as het aantal behaalde punten, 
+#    geef de punten in de grafiek een kleur per klas rood = VL3, blauw = VL4, bruin = VL5
+# 3) Bereken de cummulatieve score voor het aantal behaalde punten per klas, sla deze scores op in een nieuwe data.frame ("Summary") 
+#met klas ("$Class") als variabele 1 en cummulatieve score ("$SumScore") als variabele 2
+# 4) bereken het gemiddeld aantal behaalde punten ("$AverageScore") per klas en de standaarddeviatie ("$StDevAS") van die gemiddele
+# scores, voeg deze twee variabelen aan de data.frame "Summary" toe.
+# 5) Maak een bargraph waarin de twee grafieken staan: A -> cummulatieve score per klas ("$SummScore), B -> gemiddelde score per klas,
+# met standard error of the mean* (SEM) als error bar 
+
+# *Remember SEM = StDevAS/Number of observations ^ sqrt
+
 #################################
